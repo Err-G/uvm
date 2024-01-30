@@ -6,7 +6,7 @@
 /*   By: ecarvalh <ecarvalh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:57:00 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/01/30 10:45:55 by ecarvalh         ###   ########.fr       */
+/*   Updated: 2024/01/30 11:54:24 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	uxn_eval(t_uxn *u, t_u16 pc)
 
 int	main(int ac, char **av)
 {
-	int	fd;
-	int	i;
-	uxn	u;
+	int		fd;
+	int		i;
+	t_uxn	u;
+
 }
