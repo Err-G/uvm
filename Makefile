@@ -6,15 +6,15 @@
 #    By: ecarvalh <ecarvalh@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/30 11:41:12 by ecarvalh          #+#    #+#              #
-#    Updated: 2024/01/30 11:46:30 by ecarvalh         ###   ########.fr        #
+#    Updated: 2024/02/01 14:56:02 by ecarvalh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		= clang
 CFLAGS	= -Werror -Wextra -Wall
-SRCS	= $(wildcard *.c)
+SRCS	= aux.c stk.c stkx.c uvm.c emu.c
 OBJS	= $(SRCS:%.c=objs/%.o)
-NAME	= uxnemu
+NAME	= emu
 
 all: $(NAME)
 
@@ -30,6 +30,7 @@ fclean: clean
 re: fclean all
 
 objs/%.o: %.c
-	$(CC) $(CFLAGS) -o $@ $<
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 .PHONY: all clean fclean re

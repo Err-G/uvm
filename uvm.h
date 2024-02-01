@@ -6,7 +6,7 @@
 /*   By: ecarvalh <ecarvalh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:57:09 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/02/01 12:14:00 by ecarvalh         ###   ########.fr       */
+/*   Updated: 2024/02/01 13:02:32 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ struct s_uxn
 	t_stk	rstk; /* return stack */
 };
 
-void		aux_jump(t_uw pc, t_uw addr, t_ub m2);
+void		aux_jump(t_uw *pc, t_uw addr, t_ub m2);
 t_uw		aux_peek(t_uxn *u, t_uw addr, t_ub m2);
-void		aux_poke(t_uxn *u, t_uw addr, t_ub value, t_ub m2);
+void		aux_poke(t_uxn *u, t_uw addr, t_uw value, t_ub m2);
 t_uw		aux_device_read(t_uxn *u, t_uw addr, t_ub m2);
 void		aux_device_write(t_uxn *u, t_uw addr, t_uw value, t_ub m2);
 
@@ -109,7 +109,7 @@ t_ub		isa_sft(t_arg a);
 
 t_ub		uvm_eval(t_uxn *u, t_uw pc);
 
-extern t_u8	uvm_dei(t_uxn *u, t_ub addr);
+extern t_ub	uvm_dei(t_uxn *u, t_ub addr);
 extern void	uvm_deo(t_uxn *u, t_ub addr, t_ub value);
 
 #endif
