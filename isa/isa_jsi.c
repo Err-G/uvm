@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   emu.c                                              :+:      :+:    :+:   */
+/*   isa_jsi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <ecarvalh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 14:56:15 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/02/01 15:46:31 by ecarvalh         ###   ########.fr       */
+/*   Created: 2024/02/01 16:10:03 by ecarvalh          #+#    #+#             */
+/*   Updated: 2024/02/01 16:13:03 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "uvm.h"
 
-int main(int ac, char **av)
+t_ub	isa_jsi(t_arg a)
 {
-	(void)ac;
-	(void)av;
+	t_uw	x;
+
+	stk_push2(a.s, *a.pc + 2);
+	x = a.u->ram[*a.pc++] << 8;
+	x = x | a.u->ram[*a.pc++];
+	*a.pc += x;
 	return (0);
 }

@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   emu.c                                              :+:      :+:    :+:   */
+/*   isa_li2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <ecarvalh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 14:56:15 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/02/01 15:46:31 by ecarvalh         ###   ########.fr       */
+/*   Created: 2024/02/01 16:15:37 by ecarvalh          #+#    #+#             */
+/*   Updated: 2024/02/01 16:17:01 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "uvm.h"
 
-int main(int ac, char **av)
+t_ub	isa_li2(t_arg a)
 {
-	(void)ac;
-	(void)av;
+	stk_push(a.s, a.u->ram[*a.pc++]);
+	stk_push(a.s, a.u->ram[*a.pc++]);
 	return (0);
 }

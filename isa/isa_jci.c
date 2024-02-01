@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   emu.c                                              :+:      :+:    :+:   */
+/*   isa_jci.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <ecarvalh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 14:56:15 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/02/01 15:46:31 by ecarvalh         ###   ########.fr       */
+/*   Created: 2024/02/01 15:32:02 by ecarvalh          #+#    #+#             */
+/*   Updated: 2024/02/01 15:50:12 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "uvm.h"
 
-int main(int ac, char **av)
+t_ub	isa_jci(t_arg a)
 {
-	(void)ac;
-	(void)av;
+	t_ub	x;
+	t_uw	y;
+
+	x = stk_pop(a.s, a.mk);
+	if (!x)
+		*a.pc += 2;
+	if (!x)
+		return (0);
+	y = a.u->ram[*a.pc++] << 8;
+	y = y | a.u->ram[*a.pc++];
+	*a.pc += y;
 	return (0);
 }

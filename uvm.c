@@ -6,12 +6,12 @@
 /*   By: ecarvalh <ecarvalh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:57:00 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/02/01 12:15:54 by ecarvalh         ###   ########.fr       */
+/*   Updated: 2024/02/01 15:45:51 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "u.h"
+#include "uvm.h"
 
 t_arg	get_arg(t_uxn *u, t_uw *pc)
 {
@@ -60,12 +60,4 @@ int	uxn_eval(t_uxn *u, t_uw pc)
 		if (res)
 			return ((int)res);
 	}
-}
-
-int	main(int ac, char **av)
-{
-	int		fd;
-	int		i;
-	t_uxn	u;
-
 }
