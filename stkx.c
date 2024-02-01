@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   u.c                                                :+:      :+:    :+:   */
+/*   stkx.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecarvalh <ecarvalh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/30 09:57:00 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/01/30 11:54:24 by ecarvalh         ###   ########.fr       */
+/*   Created: 2024/01/30 23:18:55 by ecarvalh          #+#    #+#             */
+/*   Updated: 2024/01/31 19:33:24 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "u.h"
+#include "uvm.h"
 
-int	uxn_eval(t_uxn *u, t_u16 pc)
+t_uw	stk_popx(t_stk *stk, t_ub mk, t_ub m2);
+void	stk_pushx(t_stk *stk, t_uw value, t_ub m2);
+
+t_uw	stk_popx(t_stk *stk, t_ub mk, t_ub m2)
 {
-	t_u8	ins;
-
-	if (!pc || u->dev[0x0f]) return 0;
-	while (1)
-	{
-		ins = ram[pc++];
-	}
+	if (m2)
+		return (stk_pop2(stk, mk));
+	else
+		return (stk_pop(stk, mk));
 }
 
-int	main(int ac, char **av)
+void	stk_pushx(t_stk *stk, t_uw value, t_ub m2)
 {
-	int		fd;
-	int		i;
-	t_uxn	u;
-
+	if (m2)
+		stk_push2(stk, value);
+	else
+		stk_push(stk, value);
 }
