@@ -6,7 +6,7 @@
 /*   By: ecarvalh <ecarvalh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:57:00 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/02/01 15:45:51 by ecarvalh         ###   ########.fr       */
+/*   Updated: 2024/02/01 20:19:28 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ t_arg	get_arg(t_uxn *u, t_uw *pc)
 	t_arg	res;
 
 	res.u = u;
-	res.ins = u->ram[*pc++];
+	res.ins = u->ram[*pc];
 	res.pc = pc;
+	(*res.pc)++;
 	res.mk = res.ins & 0x80;
 	res.m2 = res.ins & 0x20;
 	if (res.ins & 0x40)
@@ -34,7 +35,7 @@ t_arg	get_arg(t_uxn *u, t_uw *pc)
  * sth, ldz, stz, ldr, str, lda, sta, dei, deo, add, sub, mul, div, and, ora,
  * eor, sft
  */
-int	uxn_eval(t_uxn *u, t_uw pc)
+t_ub	uvm_eval(t_uxn *u, t_uw pc)
 {
 	t_isa	*imm;
 	t_isa	*opr;
@@ -54,7 +55,7 @@ int	uxn_eval(t_uxn *u, t_uw pc)
 	{
 		arg = get_arg(u, &pc);
 		if ((arg.ins & 0x1f) == 0 && (arg.ins % 0x20) == 0)
-			res = imm[arg.ins](arg);
+			res = imm[arg.ins / 0x20](arg);
 		else
 			res = opr[arg.ins](arg);
 		if (res)
