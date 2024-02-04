@@ -6,7 +6,7 @@
 /*   By: ecarvalh <ecarvalh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:32:02 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/02/01 15:50:12 by ecarvalh         ###   ########.fr       */
+/*   Updated: 2024/02/03 13:32:57 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ t_ub	isa_jci(t_arg a)
 		*a.pc += 2;
 	if (!x)
 		return (0);
-	y = a.u->ram[*a.pc++] << 8;
-	y = y | a.u->ram[*a.pc++];
+	y = a.u->ram[(*a.pc)++] << 8;
+	y = y | a.u->ram[(*a.pc)++];
 	*a.pc += y;
 	return (0);
 }

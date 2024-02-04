@@ -6,13 +6,15 @@
 /*   By: ecarvalh <ecarvalh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:56:15 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/02/01 19:33:49 by ecarvalh         ###   ########.fr       */
+/*   Updated: 2024/02/04 11:59:44 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "uvm.h"
 #include <unistd.h>
 #include <fcntl.h>
+
+#include <stdio.h>
 
 t_ub	uvm_dei(t_uxn *u, t_ub addr)
 {
@@ -42,9 +44,12 @@ int	usage(char *name)
 
 char	ft_getc(int fd)
 {
-	char	res;
+	int	res;
+	int	len;
 
-	read(fd, &res, 1);
+	len = read(fd, &res, 1);
+	if (len <= 0)
+		return (-1);
 	return (res);
 }
 
@@ -55,6 +60,7 @@ int	cli_in(t_uxn *u, char c, int type)
 	vector = u->dev[0x10] << 8 | u->dev[0x11];
 	u->dev[0x12] = c;
 	u->dev[0x17] = type;
+	printf("vector: %x\n", vector);
 	return (uvm_eval(u, vector));
 }
 
@@ -77,12 +83,12 @@ int	main(int ac, char **av)
 	if (uvm_eval(&u, 0x0100))
 	{
 		write(1, "eval\n", 5);
-		i = 0;
+		i = 1;
 		while (++i < ac)
 		{
 			p = av[i];
 			while (*p)
-				cli_in(&u, *p++, 2);
+				cli_in(&u, (*p)++, 2);
 			if (i == ac - 1)
 				cli_in(&u, '\n', 4);
 			else

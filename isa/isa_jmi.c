@@ -6,7 +6,7 @@
 /*   By: ecarvalh <ecarvalh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 15:52:52 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/02/01 16:09:39 by ecarvalh         ###   ########.fr       */
+/*   Updated: 2024/02/03 13:33:12 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ t_ub	isa_jmi(t_arg a)
 {
 	t_uw	x;
 
-	x = a.u->ram[*a.pc++] << 8;
-	x = x | a.u->ram[*a.pc++];
+	x = a.u->ram[(*a.pc)++] << 8;
+	x = x | a.u->ram[(*a.pc)++];
 	*a.pc += x;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ecarvalh <ecarvalh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 16:15:37 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/02/01 16:17:01 by ecarvalh         ###   ########.fr       */
+/*   Updated: 2024/02/03 13:33:52 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_ub	isa_li2(t_arg a)
 {
-	stk_push(a.s, a.u->ram[*a.pc++]);
-	stk_push(a.s, a.u->ram[*a.pc++]);
+	stk_push(a.s, a.u->ram[(*a.pc)++]);
+	stk_push(a.s, a.u->ram[(*a.pc)++]);
 	return (0);
 }

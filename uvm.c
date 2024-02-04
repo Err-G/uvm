@@ -6,7 +6,7 @@
 /*   By: ecarvalh <ecarvalh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:57:00 by ecarvalh          #+#    #+#             */
-/*   Updated: 2024/02/01 20:19:28 by ecarvalh         ###   ########.fr       */
+/*   Updated: 2024/02/03 13:39:08 by ecarvalh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_ub	uvm_eval(t_uxn *u, t_uw pc)
 		if ((arg.ins & 0x1f) == 0 && (arg.ins % 0x20) == 0)
 			res = imm[arg.ins / 0x20](arg);
 		else
-			res = opr[arg.ins](arg);
+			res = opr[arg.ins & 0x1f](arg);
 		if (res)
 			return ((int)res);
 	}
